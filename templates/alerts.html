@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">System Alerts</h1>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <!-- Alerts table -->
+    <div class="card shadow-sm rounded-3">
+        <div class="card-body">
+            {% if alerts %}
+            <table class="table table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">Time</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Severity</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for alert in alerts %}
+                    <tr>
+                        <td>{{ alert.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                        <td>{{ alert.alert_type }}</td>
+                        <td>{{ alert.message }}</td>
+                        <td>
+                            {% if alert.severity == 'error' %}
+                                <span class="badge bg-danger">Error</span>
+                            {% elif alert.severity == 'warning' %}
+                                <span class="badge bg-warning text-dark">Warning</span>
+                            {% else %}
+                                <span class="badge bg-info">Info</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if alert.is_read %}
+                                <span class="badge bg-success">Read</span>
+                            {% else %}
+                                <span class="badge bg-secondary">Unread</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <p class="text-muted">No alerts found.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

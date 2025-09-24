@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Page Not Found</title>
+<script src="https://www.google.com/search?q=https://cdn.tailwindcss.com"></script>
+<style>
+body {
+font-family: 'Inter', sans-serif;
+background-color: #f3f4f6;
+}
+</style>
+</head>
+<body class="flex items-center justify-center min-h-screen text-center p-8">
+<div>
+<h1 class="text-9xl font-extrabold text-gray-700">404</h1>
+<p class="text-2xl font-semibold text-gray-600 mt-4">Page Not Found</p>
+<p class="text-gray-500 mt-2">The page you're looking for doesn't exist.</p>
+<a href="{{ url_for('dashboard') }}" class="mt-6 inline-block px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 transition duration-150 ease-in-out">
+Go to Dashboard
+</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NetGuardian AI - Network Inventory</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Network Inventory</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>IP Address</th>
+                <th>Hostname</th>
+                <th>Vendor</th>
+                <th>Model</th>
+                <th>OS</th>
+                <th>Uptime</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for device in devices %}
+            <tr>
+                <td>{{ device.ip }}</td>
+                <td>{{ device.hostname }}</td>
+                <td>{{ device.vendor }}</td>
+                <td>{{ device.model }}</td>
+                <td>{{ device.os }}</td>
+                <td>{{ device.uptime }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
