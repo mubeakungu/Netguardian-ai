@@ -1,0 +1,8 @@
+flask
+gunicorn
+pandas
+openpyxl
+xhtml2pdf
+psycopg2-binary
+flask_sqlalchemy
+flask_migrate
